@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import styles from "./styles.module.css"
 import { useRef, useState } from "react";
 import { Pause } from "@phosphor-icons/react";
 import nextSVG from "../../resource/next.svg";
