@@ -100,7 +100,7 @@ export default function Player() {
           next={next}
         />
         <div className={styles.actions}>
-          <audio ref={player} src={playlist[music].url} />
+          <audio ref={player} src={playlist[music].url} controlsList="nodownload"/>
           <button className={styles.previus} onClick={previus}>
             <SkipBack size={15} color="#4D5562" weight="fill" />
           </button>
