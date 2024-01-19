@@ -1,8 +1,12 @@
-import { useRef, useState } from "react";
 import styles from "./styles.module.css";
-import { Pause, Play, SkipBack, SkipForward } from "@phosphor-icons/react";
-import { playlist } from "../../db/db";
+import { useRef, useState } from "react";
+import { Pause } from "@phosphor-icons/react";
+import nextSVG from "../../resource/next.svg";
+import playSVG from "../../resource/play.svg";
+import previusSVG from "../../resource/back.svg";
 import Progress from "./Progress";
+
+import { playlist } from "../../db/db";
 export default function Player() {
   const [playing, setPlaying] = useState<boolean>(false);
   const [music, setMusic] = useState<number>(0);
@@ -81,7 +85,6 @@ export default function Player() {
     }
   };
 
-  console.log(music);
   return (
     <section className={styles.section}>
       <header className={styles.header}>
@@ -100,19 +103,23 @@ export default function Player() {
           next={next}
         />
         <div className={styles.actions}>
-          <audio ref={player} src={playlist[music].url} controlsList="nodownload"/>
+          <audio
+            ref={player}
+            src={playlist[music].url}
+            controlsList="nodownload"
+          />
           <button className={styles.previus} onClick={previus}>
-            <SkipBack size={15} color="#4D5562" weight="fill" />
+            <img src={previusSVG} alt="previus" />
           </button>
           <button onClick={handlePlay} className={styles.audio}>
             {playing ? (
               <Pause size={18} color="#fff" weight="fill" />
             ) : (
-              <Play size={18} color="#fff" weight="fill" />
+              <img src={playSVG} alt="play" />
             )}
           </button>
           <button onClick={next} className={styles.next}>
-            <SkipForward size={15} color="#4D5562" weight="fill" />
+            <img src={nextSVG} alt="next" />
           </button>
         </div>
       </footer>
